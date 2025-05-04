@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #2196F3;
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+    --text-color: #333;
+    --bg-color: #f0f2f5;
+    --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--success-color));
+    border-radius: 2px;
+}
+
+h2 {
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h2::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--success-color));
+    border-radius: 2px;
+}
+
+.task-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.task-form:focus-within {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
+}
+
+.task-form input,
+.task-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.task-form input:focus,
+.task-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+}
+
+.task-form button,
+.task-actions button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.task-form button svg,
+.task-actions button svg {
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+}
+
+.task-form button:hover svg,
+.task-actions button:hover svg {
+    transform: scale(1.1);
+}
+
+.task-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.task-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.task-section:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+.task-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.task-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+    pointer-events: none;
+}
+
+.task-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed {
+    background: #e8f5e9;
+    border-left-color: var(--success-color);
+}
+
+.task-item h3 {
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.task-item p {
+    color: #666;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.task-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.task-actions button:first-child {
+    background: var(--primary-color);
+    color: white;
+}
+
+.task-actions button:first-child:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.task-actions button:last-child {
+    background: var(--danger-color);
+    color: white;
+}
+
+.task-actions button:last-child:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+}
+
+/* Loader Styles */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    backdrop-filter: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+.loader::before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #f0f0f0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow324 0.5s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    animation: jump7456 0.5s linear infinite;
+}
+
+@keyframes jump7456 {
+    15% {
+        border-bottom-right-radius: 3px;
+    }
+
+    25% {
+        transform: translateY(9px) rotate(22.5deg);
+    }
+
+    50% {
+        transform: translateY(18px) scale(1, .9) rotate(45deg);
+        border-bottom-right-radius: 40px;
+    }
+
+    75% {
+        transform: translateY(9px) rotate(67.5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(90deg);
+    }
+}
+
+@keyframes shadow324 {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.2, 1);
+    }
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem auto;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    .task-form {
+        padding: 1.2rem;
+    }
+    
+    .task-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .task-section {
+        padding: 1.2rem;
+    }
+    
+    .task-item {
+        padding: 1.2rem;
+    }
+    
+    .task-item h3 {
+        font-size: 1rem;
+    }
+    
+    .task-item p {
+        font-size: 0.85rem;
+    }
+    
+    .task-actions button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+} 
+
+/* Modal Stilleri */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.modal.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    position: relative;
+}
+
+.modal-icon.success {
+    background: #e8f5e9;
+    color: var(--success-color);
+}
+
+.modal-icon.error {
+    background: #ffebee;
+    color: var(--danger-color);
+}
+
+.modal-icon.warning {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.modal-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid currentColor;
+    animation: ripple 1s ease-out infinite;
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+}
+
+.modal-message {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modal-btn.confirm {
+    background: var(--primary-color);
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.modal-btn.cancel {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.modal-btn.cancel:hover {
+    background: #eeeeee;
+    transform: translateY(-2px);
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+} 
+
+.form-row {
+    display: block;
+}
+
+.date-input {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.date-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.date-input input[type="date"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.date-input input[type="date"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+}
+
+.task-form button[type="submit"] {
+    width: 100%;
+    justify-content: center;
+    background: var(--success-color);
+    color: white;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.task-form button[type="submit"]:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.task-due-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(33, 150, 243, 0.1);
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.task-due-date svg {
+    stroke-width: 2;
+}
+
+.task-due-date.overdue {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--danger-color);
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        display: block;
+    }
+    
+    .date-input {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+} 
+
+/* Task Detail Modal */
+.task-detail-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-detail-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.task-detail-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.task-detail-description {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #666;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+    font-size: 1.5em;
+}
+
+/* Kaydırma çubuğu stilleri */
+.task-detail-description::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task-detail-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.task-detail-description::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.task-detail-description::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.task-detail-dates {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 0.7em;
+    color: #888;
+}
+
+.task-detail-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.task-detail-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.task-detail-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+} 
